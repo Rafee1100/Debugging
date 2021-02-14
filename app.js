@@ -23,6 +23,7 @@ const showImages = (images) => {
   gallery.innerHTML = '';
   // show gallery title
   if (images.length == 0) {
+    counter.innerHTML=''
     gallery.innerHTML = `
     <div id="not-found" >
     <h3><i class="fa fa-search" id="search-icon" aria-hidden="true"></i> &nbsp;Search result not found</h3>
@@ -74,7 +75,6 @@ const selectItem = (event, img) => {
   `Select photos`
   }
   else{
-    
     counter.innerHTML=
     `You have selected ${imgcount} photos`
   }
