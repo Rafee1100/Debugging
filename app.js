@@ -17,19 +17,32 @@ const KEY = '15674931-a9d714b6e9d654524df198e00&q';
 
 // show images 
 const showImages = (images) => {
+  //The extra features spinners and photo count
   spinner.style.display='none';
-  counter.innerHTML=
-  `Select photos`
   imagesArea.style.display = 'block';
   gallery.innerHTML = '';
   // show gallery title
-  galleryHeader.style.display = 'flex';
-  images.forEach(image => {
-    let div = document.createElement('div');
-    div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
-    div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
-    gallery.appendChild(div)
-  })
+  if (images.length == 0) {
+    gallery.innerHTML = `
+    <div id="not-found" >
+    <h3><i class="fa fa-search" id="search-icon" aria-hidden="true"></i> &nbsp;Search result not found</h3>
+     </div>
+    
+    `
+  }
+  else {
+    // show gallery title
+    counter.innerHTML=
+    `Select photos`
+    galleryHeader.style.display = 'flex';
+    images.forEach(image => {
+      let div = document.createElement('div');
+      div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
+      div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
+      gallery.appendChild(div)
+    })
+  }
+
 
 }
 
